@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
+ *, *::before, *::after { box-sizing: border-box; }
 
     :root {
       --cream: #f8f5f0;
@@ -18,6 +18,9 @@
       --beige: #e8dfd4;
       --beige-light: #f1e9df;
       --white: #ffffff;
+      
+      /* New color definition for text smoothness */
+      --text-main: rgba(62, 47, 37, 0.88);
     }
 
     body {
@@ -27,58 +30,59 @@
       color: var(--brown);
       text-align: center;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
     }
 
     h1, h2, h3 {
       font-family: 'Playfair Display', serif;
       text-align: center;
+      margin-top: 0;
     }
 
     /* ===== BANNER ===== */
-  .banner-container {
-  position: relative;
-  width: 100%;
-  height: 340px;
-  overflow: hidden;
-}
+    .banner-container {
+      position: relative;
+      width: 100%;
+      height: 340px;
+      overflow: hidden;
+    }
 
-.banner {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: brightness(0.55);
-  transform: scale(1.02);
-}
+    .banner {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.55);
+      transform: scale(1.02);
+    }
 
-.banner-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 760px;
-  text-align: center;
-}
+    .banner-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 760px;
+      text-align: center;
+    }
 
+    /* svg هم اگر استفاده شد */
+    .banner-text svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      overflow: visible;
+    }
 
-/* subtitle */
-.banner-subtitle {
-  color: #7a5c44;
-  font-size: 12px;
-  letter-spacing: 3px;
-  margin-top: 16px;
-  text-transform: uppercase;
-}
-
-/* svg هم اگر استفاده شد */
-.banner-text svg {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  overflow: visible;
-}
+    /* subtitle */
+    .banner-subtitle {
+      color: #7a5c44;
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-top: 16px;
+      text-transform: uppercase;
+    }
 
     /* ===== NAV BUTTONS ===== */
     .buttons {
@@ -112,7 +116,6 @@
       transform: translateY(0);
     }
 
-
     /* ===== SECTIONS ===== */
     .section {
       display: none;
@@ -122,7 +125,7 @@
       padding: 50px;
       border-radius: 25px;
       box-shadow: 0 10px 40px rgba(0,0,0,0.06);
-      text-align: left;
+      text-align: left; /* Default text inside section is left, but we justify it later */
       animation: fadeUp 0.4s ease;
     }
 
@@ -133,32 +136,47 @@
 
     .section.active { display: block; }
 
-    .block { margin-bottom: 80px; }
+    /* ===== ABOUT SECTION — text + photo CENTERED ===== */
+    .about-layout {
+      display: flex;
+      flex-direction: column; /* این دستور همه چیز را عمودی می‌چیند */
+      align-items: center;    /* این دستور همه چیز را دقیقاً در مرکزِ عرض تراز می‌کند */
+      gap: 30px;              /* فاصله مناسب بین عکس و شروع متن */
+      width: 100%;
+    }
 
-    /* ===== ABOUT — text + photo side by side ===== */
- 
-.about-text p {
-  line-height: 1.8;
-  margin-bottom: 15px;
-  text-align: justify; /* تراز شدن متن از طرفین برای ظاهر تمیز و کتابی */
-  color: var(--brown);
-  font-size: 15px;
-}
+    /* تراز وسط برای عکس */
+    .about-photo {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
 
-/* حذف column-reverse در موبایل برای اینکه عکس همیشه بالا بماند */
-@media (max-width: 768px) {
-  .about-layout {
-    flex-direction: column; 
-    gap: 20px;
-  }
-  
-  .about-photo img {
-    width: 150px; /* کمی کوچک‌تر در موبایل */
-    height: 150px;
-  }
-}
+    /* تنظیمات عکس (اندازه متوسط، دایره‌ای و شیک) */
+    .about-photo img {
+      width: 180px; 
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%; /* دایره‌ای شدن عکس */
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 3px solid var(--beige-light); /* یک خط دور عکس برای تمایز */
+    }
 
+    /* تنظیمات متن زیر عکس */
+    .about-text {
+      width: 100%;
+      max-width: 750px; /* جلوگیری از کشیده شدن بیش از حد متن */
+      margin: 0 auto;   /* تراز وسط برای کلِ بلوکِ متن */
+    }
 
+    .about-text p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      text-align: justify;    /* تراز شدن تمیز متن از طرفین */
+      color: var(--text-main);
+      font-size: 15px;
+      font-weight: 300;       /* برای داشتن ظاهری ظریف‌تر */
+    }
 
     /* ===== SKILLS ===== */
     .center-skills {
@@ -307,28 +325,17 @@
         height: 220px;
       }
 
+      /* حذف column-reverse در موبایل برای اینکه عکس همیشه بالا بماند */
       .about-layout {
-  display: flex;
-  flex-direction: column; 
-  align-items: center;
-  gap: 25px; /* فاصله مناسب بین عکس و شروع متن */
-}
-/* تنظیم ظرف عکس برای اطمینان از وسط بودن */
-.about-photo {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
+        flex-direction: column; 
+        align-items: center;
+        gap: 20px;
+      }
 
-/* تنظیمات عکس (اندازه متوسط و حاشیه نرم) */
-.about-photo img {
-  width: 180px;  /* اندازه متوسط */
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%; /* دایره‌ای شدن عکس برای ظاهر حرفه‌ای‌تر */
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  border: 3px solid var(--beige); /* یک خط دور عکس برای تمایز بیشتر */
-    
+      .about-photo img {
+        width: 150px; /* اندازه متوسط مناسب در موبایل */
+        height: 150px;
+      }
 
       .skill-block {
         width: 100%;
@@ -426,27 +433,27 @@
   </div>
 
   <!-- ABOUT -->
- <div id="about" class="section active">
-  <h2>Présentation</h2>
-  
-  <div class="about-layout">
-    <div class="about-photo">
-      <img src="me.jpg" alt="Tahoora Atashi">
-    </div>
+<div id="about" class="section active">
+      <h2>Présentation</h2>
+      
+      <div class="about-layout">
+        <div class="about-photo">
+          <img src="me.jpg" alt="Tahoora Atashi">
+        </div>
 
-    <div class="about-text">
-      <p>
-        Tout a commencé pendant mes études en littérature anglaise. À côté de l'université, je passais beaucoup de temps sur mes réseaux sociaux, à créer du contenu artistique, à expérimenter, à tester, et sans avoir dès le départ un plan précis, je me suis peu à peu fait remarquer.
-      </p>
-      <p>
-        Les premières propositions de collaborations sont arrivées naturellement. Travailler avec des marques, créer du contenu, comprendre ce qui fonctionne auprès d'une audience… tout ça m'a donné envie d'aller plus loin. Je ne voulais plus seulement « publier », mais comprendre le pourquoi derrière chaque contenu : comment une marque parle, à qui, et avec quel impact.
-      </p>
-      <p>
-        C'est comme ça que mon intérêt pour le digital et la communication s'est construit. En structurant ce que je faisais déjà de manière intuitive, j'ai découvert le Master Communication Web Multilingue à l'Université de Strasbourg. Aujourd'hui, je souhaite mettre mes acquis en pratique dans le cadre d'une alternance afin de développer une expérience professionnelle concrète et continuer à évoluer dans des projets de communication digitale.
-      </p>
+        <div class="about-text">
+          <p>
+            Tout a commencé pendant mes études en littérature anglaise. À côté de l'université, je passais beaucoup de temps sur mes réseaux sociaux, à créer du contenu artistique, à expérimenter, à tester, et sans avoir dès le départ un plan précis, je me suis peu à peu fait remarquer.
+          </p>
+          <p>
+            Les premières propositions de collaborations sont arrivées naturellement. Travailler avec des marques, créer du contenu, comprendre ce qui fonctionne auprès d'une audience… tout ça m'a donné envie d'aller plus loin. Je ne voulais plus seulement « publier », mais comprendre le pourquoi derrière chaque contenu : comment une marque parle, à qui, et avec quel impact.
+          </p>
+          <p>
+            C'est comme ça que mon intérêt pour le digital et la communication s'est construit. En structurant ce que je faisais déjà de manière intuitive, j'ai découvert le Master Communication Web Multilingue à l'Université de Strasbourg. Aujourd'hui, je souhaite mettre mes acquis en pratique dans le cadre d'une alternance afin de développer une expérience professionnelle concrète et continuer à évoluer dans des projets de communication digitale.
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
   <!-- SKILLS -->
   <div id="skills" class="section">
     <h2>Compétences</h2>
