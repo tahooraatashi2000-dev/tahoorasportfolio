@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tahoora Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom, #f8f5f0, #efe7dc);
+      color: #3e2f25;
+      text-align: center;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      text-align: center; /* titles centered */
+    }
+
+    .banner-container {
+      position: relative;
+      width: 100%;
+      max-height: 220px;
+      overflow: hidden;
+    }
+
+    .banner {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: brightness(0.7);
+    }
+
+    .banner-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      line-height: 2;
+    }
+
+    .buttons {
+      margin: 30px;
+    }
+
+    button {
+      background: #e8dfd4;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .section {
+      display: none;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 50px;
+      border-radius: 25px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+      text-align: left;
+    }
+	.section.active {
+  display: block;
+}
+
+    .active { display: block; }
+
+    .block { margin-bottom: 80px; }
+
+    .about-text {
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.5;
+      text-align: left;
+    }
+
+    .about-text p { margin-bottom: 10px; }
+
+    .graphique img {
+      width: 100%;
+      max-width: 350px;
+      margin: 30px auto;
+      display: block;
+      border-radius: 15px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .img-small { width: 30%; max-width: 250px; }
+
+    .video-large { width: 55%; max-width: 500px; }
+
+    .video {
+      width: 50%;
+      max-width: 380px;
+      margin: 40px auto;
+      display: block;
+      border-radius: 15px;
+    }
+
+    .footer {
+      margin: 80px;
+      font-size: 22px;
+    }/* ===== SKILLS FIX ===== */
+
+
+/* ===== PERFECT LEFT ALIGN CENTER BLOCK ===== */
+
+.center-skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* کل bloc وسط */
+}
+
+/* هر بخش */
+.skill-block {
+  width: 320px; /* 🔥 کل عرض مشترک */
+  margin: 35px 0;
+  text-align: left; /* همه چیز داخل چپ‌چین */
+}
+
+/* title */
+.skill-block strong {
+  display: block;
+  font-size: 18px;
+  padding: 8px 20px;
+  background: #f1e9df;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+/* لیست */
+.skill-block ul {
+  margin: 0;
+  padding-left: 25px;
+}
+
+/* آیتم‌ها */
+.skill-block li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+.footer {
+  text-align: center;
+  margin: 80px 0 40px 0;
+  font-family: 'Playfair Display', serif;
+}
+
+.footer .cta {
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.footer .cta:hover {
+  opacity: 0.6;
+}
+
+.footer .subtitle {
+  font-size: 14px;
+  color: #5c4a3a; /* پررنگ‌تر و شیک‌تر */
+  font-weight: 500; /* یه کم bold */
+}
+.footer .copyright {
+  font-size: 12px;
+  color: #aaa;
+}
+/* ===== PROJECTS CLEAN FINAL ===== */
+
+#projects .block {
+  max-width: 650px;
+  margin: 0 auto 100px auto;
+  text-align: center;
+}
+
+
+/* هر bloc */
+#projects .block {
+  width: 100%;
+  max-width: 650px;
+  margin-bottom: 100px;
+  text-align: center; /* همه چیز وسط */
+}
+
+/* title */
+#projects h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* متن */
+#projects p {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* لیست */
+#projects ul {
+  padding-left: 0;
+  list-style-position: inside;
+  text-align: center;
+}
+#cv a {
+  font-size: 18px;
+  text-decoration: none;
+  color: #3e2f25;
+  transition: 0.3s;
+}
+
+#cv a:hover {
+  opacity: 0.6;
+}
+#cv {
+  text-align: center;
+}
+#contact {
+  text-align: center;
+}
+
+#contact p {
+  margin: 10px 0;
+}
+
+#contact a {
+  text-decoration: none;
+  color: #3e2f25;
+  transition: 0.3s;
+}
+
+#contact a:hover {
+  opacity: 0.6;
+}
+#contact p {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+#contact p:first-child {
+  margin-left: 30px; /* 🔥 کل خط میره راست */
+}
+  </style>
+</head>
+
+<body>
+
+  <div class="banner-container">
+    <img src="banner.jpg" class="banner">
+    <div class="banner-text">
+      <h1>PORTFOLIO</h1>
+      <p>ATASHI Tahoora / 2026</p>
+      <p>Community Management | Marketing Digital | Communication Multilingue</p>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button onclick="showSection('about')">Qui je suis</button>
+    <button onclick="showSection('skills')">Compétences</button>
+    <button onclick="showSection('projects')">Projets</button>
+    <button onclick="showSection('cv')">CV</button>
+    <button onclick="showSection('contact')">Contact</button>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" class="section active">
+  <h2>Présentation</h2>
+
+  <div class="about-text">
+    <p>
+      Tout a commencé pendant mes études en littérature anglaise. À côté de l’université, je passais beaucoup de temps sur mes réseaux sociaux, à créer du contenu artistique, à expérimenter, à tester, et sans avoir dès le départ un plan précis, je me suis peu à peu fait remarquer.
+    </p>
+
+    <p>
+      Les premières propositions de collaborations sont arrivées naturellement. Travailler avec des marques, créer du contenu, comprendre ce qui fonctionne auprès d’une audience… tout ça m’a donné envie d’aller plus loin. Je ne voulais plus seulement « publier », mais comprendre le pourquoi derrière chaque contenu : comment une marque parle, à qui, et avec quel impact.
+    </p>
+
+    <p>
+      C’est comme ça que mon intérêt pour le digital et la communication s’est construit. En structurant ce que je faisais déjà de manière intuitive, j’ai découvert le Master Communication Web Multilingue à l’Université de Strasbourg. Aujourd’hui, je souhaite mettre mes acquis en pratique dans le cadre d’une alternance afin de développer une expérience professionnelle concrète et continuer à évoluer dans des projets de communication digitale.
+    </p>
+  </div>
+</div>
+
+  <!-- SKILLS (no repeated titles inside) -->
+  <div id="skills" class="section">
+  <h2>Compétences</h2>
+
+  <div class="about-text center-skills">
+
+    <div class="skill-block">
+      <strong>Développement web</strong>
+      <ul>
+        <li>Front-end : HTML, CSS, JavaScript, React</li>
+        <li>Back-end : PHP, SQL</li>
+        <li>CMS : WordPress</li>
+      </ul>
+    </div>
+
+    <div class="skill-block">
+      <strong>Design & création visuelle</strong>
+      <ul>
+        <li>Wireframing & prototypage : Figma</li>
+        <li>Design graphique : Adobe Illustrator, Photoshop, InDesign</li>
+      </ul>
+    </div>
+
+    <div class="skill-block">
+      <strong>Marketing digital</strong>
+      <ul>
+        <li>Stratégie de contenu</li>
+        <li>Gestion et animation des réseaux sociaux</li>
+        <li>Analyse des tendances</li>
+        <li>Développement d’audience</li>
+        <li>Collaboration avec des marques</li>
+      </ul>
+    </div>
+
+    <div class="skill-block">
+      <strong>Création de contenu</strong>
+      <ul>
+        <li>Production de contenus (vidéo, visuels, storytelling)</li>
+        <li>Montage vidéo</li>
+        <li>Création graphique (Canva)</li>
+        <li>Formats engageants pour réseaux sociaux</li>
+      </ul>
+    </div>
+
+    <div class="skill-block">
+      <strong>Rédaction & communication</strong>
+      <ul>
+        <li>Rédaction web et SEO</li>
+        <li>Création de contenus éditoriaux</li>
+        <li>Communication multilingue</li>
+        <li>Traduction</li>
+      </ul>
+    </div>
+
+    <div class="skill-block">
+      <strong>Compétences linguistiques</strong>
+      <ul>
+        <li>Français : C2</li>
+        <li>Anglais : C2 (courant)</li>
+        <li>Persan : langue maternelle</li>
+      </ul>
+    </div>
+
+    <div class="skill-block">
+      <strong>Soft skills</strong>
+      <ul>
+        <li>Créativité</li>
+        <li>Communication interculturelle</li>
+        <li>Curiosité</li>
+        <li>Apprentissage continu</li>
+        <li>Ponctualité</li>
+        <li>Fiabilité</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <!-- PROJECTS (clean, no title repetition) -->
+  <div id="projects" class="section">
+  <h2>Projets</h2>
+
+  <!-- DESIGN GRAPHIQUE -->
+  <div class="block">
+    <h3>Design — Projets graphiques</h3>
+    <p>
+      Travaux réalisés dans un cadre universitaire, incluant la conception graphique et l’édition photographique à l’aide de la suite Adobe (Photoshop, InDesign, Illustrator) ainsi que Canva.
+    </p>
+
+    <div class="graphique">
+      <img src="chat.jpg">
+      <img src="logo1.jpg">
+      <img src="logo2.jpg">
+    </div>
+
+    <p>
+      Projet réalisé pour l’événement Gala ESN Strasbourg : conception d’un code vestimentaire et création visuelle associée.
+    </p>
+
+    <video controls class="video">
+      <source src="gala.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- FIGMA -->
+  <div class="block">
+    <h3>Figma — Maquette interactive de site web</h3>
+    <p>
+      Maquette réalisée dans le cadre d’un projet universitaire. Ce travail m’a permis de développer mes compétences en design d’interface, en structuration de contenu et en expérience utilisateur.
+    </p>
+
+    <div class="row">
+      <img src="figma.jpg" class="img-small">
+      
+      <video controls class="video-large">
+        <source src="maquettevideo.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- VIDEOS -->
+  <div class="block">
+    <h3>Projets vidéo</h3>
+    <p>
+      Production de vidéos pour les réseaux sociaux d’ESN Strasbourg afin de promouvoir les événements Pub Crawl et Gala. J’ai assuré l’ensemble du processus de création : écriture du script, captation, idéation créative et montage. Ces contenus ont généré des retours positifs et un bon engagement sur les réseaux sociaux.
+    </p>
+
+    <video controls class="video">
+      <source src="video1.mp4" type="video/mp4">
+    </video>
+
+    <video controls class="video">
+      <source src="video2.mp4" type="video/mp4">
+    </video>
+
+    <video controls class="video">
+      <source src="video3.mp4" type="video/mp4">
+    </video>
+  </div>
+
+</div>
+
+  
+  <!-- CV -->
+<div id="cv" class="section">
+
+  <p style="text-align:center;">
+    <a href="tahoorascv.pdf" target="_blank">Voir mon CV</a>
+  </p>
+
+</div>
+
+  <!-- CONTACT -->
+ <div id="contact" class="section">
+  <h2>Contact</h2>
+
+  <div class="about-text" style="text-align:center;">
+    <p>
+      Email : 
+      <a href="mailto:tahoora.atashi.2000@gmail.com">
+        tahoora.atashi.2000@gmail.com
+      </a>
+    </p>
+
+    <p>
+      Téléphone : 
+      <a href="tel:+33651315309">
+        06 51 31 53 09
+      </a>
+    </p>
+	<p>
+      LinkedIn : 
+      <a href="https://www.linkedin.com/in/tahoora-atashi" target="_blank">
+        tahoora-atashi
+      </a>
+    </p>
+
+  </div>
+</div>
+
+<div class="footer">
+
+  <p class="cta" onclick="showSection('contact')">
+    → Me contacter
+  </p>
+
+  <p class="subtitle">
+    Disponible pour une alternance en communication digitale
+  </p>
+
+  <p class="copyright">
+    © 2026 ATASHI Tahoora
+  </p>
+
+</div>
+
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
