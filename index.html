@@ -155,14 +155,19 @@
       width: 180px;
     }
 
-    .about-photo img {
-      width: 180px;
-      height: 225px;
-      object-fit: cover;
-      border-radius: 18px;
-      display: block;
-      box-shadow: 0 8px 28px rgba(62,47,37,0.13);
-    }
+    .about-photo {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 30px 0;
+}
+
+.about-photo img {
+  width: 260px; /* 🔥 بزرگ‌تر */
+  height: 320px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(62,47,37,0.15);
+}
 
     /* ===== SKILLS ===== */
     .center-skills {
@@ -423,8 +428,9 @@
   <!-- ABOUT -->
   <div id="about" class="section active">
     <h2>Présentation</h2>
-    <div class="about-layout">
-      <div class="about-text">
+   <div class="about-photo">
+  <img src="your-image.jpg" alt="Tahoora Atashi">
+</div>
         <p>
           Tout a commencé pendant mes études en littérature anglaise. À côté de l'université, je passais beaucoup de temps sur mes réseaux sociaux, à créer du contenu artistique, à expérimenter, à tester, et sans avoir dès le départ un plan précis, je me suis peu à peu fait remarquer.
         </p>
