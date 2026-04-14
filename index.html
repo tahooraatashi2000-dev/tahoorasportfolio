@@ -18,8 +18,6 @@
       --beige: #e8dfd4;
       --beige-light: #f1e9df;
       --white: #ffffff;
-      
-      /* New color definition for text smoothness */
       --text-main: rgba(62, 47, 37, 0.88);
     }
 
@@ -61,12 +59,11 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 90%;
+      width: 92%;
       max-width: 760px;
       text-align: center;
     }
 
-    /* svg هم اگر استفاده شد */
     .banner-text svg {
       width: 100%;
       height: auto;
@@ -75,12 +72,11 @@
       overflow: visible;
     }
 
-    /* subtitle */
     .banner-subtitle {
-      color: #7a5c44;
-      font-size: 12px;
+      color: #c9b8a8;
+      font-size: 11px;
       letter-spacing: 3px;
-      margin-top: 16px;
+      margin-top: 14px;
       text-transform: uppercase;
     }
 
@@ -112,9 +108,7 @@
       box-shadow: 0 4px 12px rgba(62,47,37,0.12);
     }
 
-    button:active {
-      transform: translateY(0);
-    }
+    button:active { transform: translateY(0); }
 
     /* ===== SECTIONS ===== */
     .section {
@@ -125,7 +119,7 @@
       padding: 50px;
       border-radius: 25px;
       box-shadow: 0 10px 40px rgba(0,0,0,0.06);
-      text-align: left; /* Default text inside section is left, but we justify it later */
+      text-align: left;
       animation: fadeUp 0.4s ease;
     }
 
@@ -136,46 +130,44 @@
 
     .section.active { display: block; }
 
-    /* ===== ABOUT SECTION — text + photo CENTERED ===== */
+    /* ===== ABOUT ===== */
     .about-layout {
       display: flex;
-      flex-direction: column; /* این دستور همه چیز را عمودی می‌چیند */
-      align-items: center;    /* این دستور همه چیز را دقیقاً در مرکزِ عرض تراز می‌کند */
-      gap: 30px;              /* فاصله مناسب بین عکس و شروع متن */
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
       width: 100%;
     }
 
-    /* تراز وسط برای عکس */
     .about-photo {
       display: flex;
       justify-content: center;
       width: 100%;
     }
 
-    /* تنظیمات عکس (اندازه متوسط، دایره‌ای و شیک) */
-  .about-photo img {
-      width: 50px; 
-      height: 50px;
+    /* FIX: اندازه عکس اصلاح شد از 50px به 200px */
+    .about-photo img {
+      width: 200px;
+      height: 200px;
       object-fit: cover;
-      border-radius: 10%; /* دایره‌ای کردن عکس */
+      border-radius: 50%;
       border: 4px solid #f1e9df;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
-    /* تنظیمات متن زیر عکس */
     .about-text {
       width: 100%;
-      max-width: 750px; /* جلوگیری از کشیده شدن بیش از حد متن */
-      margin: 0 auto;   /* تراز وسط برای کلِ بلوکِ متن */
+      max-width: 750px;
+      margin: 0 auto;
     }
 
     .about-text p {
       line-height: 1.8;
       margin-bottom: 15px;
-      text-align: justify;    /* تراز شدن تمیز متن از طرفین */
+      text-align: justify;
       color: var(--text-main);
       font-size: 15px;
-      font-weight: 300;       /* برای داشتن ظاهری ظریف‌تر */
+      font-weight: 300;
     }
 
     /* ===== SKILLS ===== */
@@ -293,20 +285,6 @@
       font-family: 'Playfair Display', serif;
     }
 
-    .footer .cta {
-      font-size: 18px;
-      cursor: pointer;
-      margin-bottom: 10px;
-      transition: opacity 0.3s;
-    }
-    .footer .cta:hover { opacity: 0.6; }
-
-    .footer .subtitle {
-      font-size: 14px;
-      color: #5c4a3a;
-      font-weight: 500;
-    }
-
     .footer .copyright {
       font-size: 12px;
       color: #aaa;
@@ -321,20 +299,27 @@
         margin: 0 12px 28px;
       }
 
+      /* FIX: ارتفاع بنر موبایل */
       .banner-container {
-        height: 220px;
+        height: 260px;
       }
 
-      /* حذف column-reverse در موبایل برای اینکه عکس همیشه بالا بماند */
+      /* FIX: متن بنر در موبایل کامل نشان داده می‌شه */
+      .banner-text {
+        width: 98%;
+        top: 50%;
+      }
+
       .about-layout {
-        flex-direction: column; 
+        flex-direction: column;
         align-items: center;
         gap: 20px;
       }
 
+      /* FIX: اندازه عکس در موبایل */
       .about-photo img {
-        width: 150px; /* اندازه متوسط مناسب در موبایل */
-        height: 150px;
+        width: 160px;
+        height: 160px;
       }
 
       .skill-block {
@@ -363,62 +348,80 @@
         margin: 20px 12px;
         gap: 6px;
       }
+
+      .banner-subtitle {
+        font-size: 9px;
+        letter-spacing: 2px;
+        margin-top: 10px;
+      }
     }
 
+    /* FIX: موبایل خیلی کوچیک — SVG scale کوچک‌تر */
     @media (max-width: 480px) {
-      .banner-container { height: 180px; }
-      .banner-text svg text { font-size: 30px !important; }
+      .banner-container { height: 220px; }
+
+      .banner-text {
+        width: 100%;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- BANNER avec texte en courbe SVG -->
+  <!-- BANNER -->
   <div class="banner-container">
     <div class="banner-text">
-      <svg viewBox="0 0 700 130" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <path id="nameCurve" d="M 40,95 Q 200,30 350,65 Q 500,100 660,42"/>
-    <path id="titleCurve" d="M 60,118 Q 200,75 350,95 Q 500,115 640,78"/>
-	<linearGradient id="movingLight" x1="0%" y1="0%" x2="100%" y2="0%">
-  <stop offset="0%" stop-color="#6b5442"/>
-  <stop offset="45%" stop-color="#6b5442"/>
-  <stop offset="50%" stop-color="#ffffff"/>
-  <stop offset="55%" stop-color="#6b5442"/>
-  <stop offset="100%" stop-color="#6b5442"/>
+      <!--
+        FIX: viewBox بزرگتر شد و font-size کوچیک‌تر تا توی موبایل
+        همه متن دیده بشه و کلمه‌ای قطع نشه
+      -->
+      <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="nameCurve"  d="M 30,80  Q 200,25 350,55 Q 500,85 670,35"/>
+          <path id="titleCurve" d="M 30,105 Q 200,72 350,88 Q 500,105 670,72"/>
+          <linearGradient id="movingLight" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="#6b5442"/>
+            <stop offset="45%"  stop-color="#6b5442"/>
+            <stop offset="50%"  stop-color="#ffffff"/>
+            <stop offset="55%"  stop-color="#6b5442"/>
+            <stop offset="100%" stop-color="#6b5442"/>
+            <animateTransform
+              attributeName="gradientTransform"
+              type="translate"
+              from="-1 0"
+              to="1 0"
+              dur="2.5s"
+              repeatCount="indefinite"
+            />
+          </linearGradient>
+        </defs>
 
-  <animateTransform
-    attributeName="gradientTransform"
-    type="translate"
-    from="-1 0"
-    to="1 0"
-    dur="2.5s"
-    repeatCount="indefinite"
-  />
-</linearGradient>
-  </defs>
-        <text 
-  font-family="'Playfair Display', serif" 
-  font-size="54" 
-  fill="#6b5442"
-  font-weight="700"
-  letter-spacing="1"
-  style="filter: drop-shadow(0px 3px 6px rgba(255,255,255,0.35));"
->
-          <textPath href="#nameCurve" startOffset="3%">ATASHI Tahoora</textPath>
+        <!-- FIX: font-size از 54 به 46 کاهش یافت تا در موبایل جا بشه -->
+        <text
+          font-family="'Playfair Display', serif"
+          font-size="46"
+          fill="#6b5442"
+          font-weight="700"
+          letter-spacing="1"
+          style="filter: drop-shadow(0px 3px 6px rgba(255,255,255,0.35));"
+        >
+          <textPath href="#nameCurve" startOffset="2%">ATASHI Tahoora</textPath>
         </text>
-    <text 
-  font-family="'Poppins', sans-serif" 
-  font-size="13" 
-  fill="url(#movingLight)"
-  letter-spacing="2"
->
-  <textPath href="#titleCurve" startOffset="8%">
-    Community Management · Marketing Digital · Communication
-  </textPath>
-</text>
+
+        <!-- FIX: font-size از 13 به 11.5 کاهش یافت -->
+        <text
+          font-family="'Poppins', sans-serif"
+          font-size="11.5"
+          fill="url(#movingLight)"
+          letter-spacing="1.8"
+        >
+          <textPath href="#titleCurve" startOffset="3%">
+            Community Management · Marketing Digital · Communication
+          </textPath>
+        </text>
       </svg>
+
       <p class="banner-subtitle">Disponible pour une alternance en communication digitale</p>
     </div>
   </div>
@@ -433,27 +436,28 @@
   </div>
 
   <!-- ABOUT -->
-<div id="about" class="section active">
-      <h2>Présentation</h2>
-      
-      <div class="about-layout">
-        <div class="about-photo">
-          <img src="me.jpg" alt="Tahoora Atashi">
-        </div>
+  <div id="about" class="section active">
+    <h2>Présentation</h2>
 
-        <div class="about-text">
-          <p>
-            Tout a commencé pendant mes études en littérature anglaise. À côté de l'université, je passais beaucoup de temps sur mes réseaux sociaux, à créer du contenu artistique, à expérimenter, à tester, et sans avoir dès le départ un plan précis, je me suis peu à peu fait remarquer.
-          </p>
-          <p>
-            Les premières propositions de collaborations sont arrivées naturellement. Travailler avec des marques, créer du contenu, comprendre ce qui fonctionne auprès d'une audience… tout ça m'a donné envie d'aller plus loin. Je ne voulais plus seulement « publier », mais comprendre le pourquoi derrière chaque contenu : comment une marque parle, à qui, et avec quel impact.
-          </p>
-          <p>
-            C'est comme ça que mon intérêt pour le digital et la communication s'est construit. En structurant ce que je faisais déjà de manière intuitive, j'ai découvert le Master Communication Web Multilingue à l'Université de Strasbourg. Aujourd'hui, je souhaite mettre mes acquis en pratique dans le cadre d'une alternance afin de développer une expérience professionnelle concrète et continuer à évoluer dans des projets de communication digitale.
-          </p>
-        </div>
+    <div class="about-layout">
+      <div class="about-photo">
+        <img src="me.jpg" alt="Tahoora Atashi">
+      </div>
+
+      <div class="about-text">
+        <p>
+          Tout a commencé pendant mes études en littérature anglaise. À côté de l'université, je passais beaucoup de temps sur mes réseaux sociaux, à créer du contenu artistique, à expérimenter, à tester, et sans avoir dès le départ un plan précis, je me suis peu à peu fait remarquer.
+        </p>
+        <p>
+          Les premières propositions de collaborations sont arrivées naturellement. Travailler avec des marques, créer du contenu, comprendre ce qui fonctionne auprès d'une audience… tout ça m'a donné envie d'aller plus loin. Je ne voulais plus seulement « publier », mais comprendre le pourquoi derrière chaque contenu : comment une marque parle, à qui, et avec quel impact.
+        </p>
+        <p>
+          C'est comme ça que mon intérêt pour le digital et la communication s'est construit. En structurant ce que je faisais déjà de manière intuitive, j'ai découvert le Master Communication Web Multilingue à l'Université de Strasbourg. Aujourd'hui, je souhaite mettre mes acquis en pratique dans le cadre d'une alternance afin de développer une expérience professionnelle concrète et continuer à évoluer dans des projets de communication digitale.
+        </p>
       </div>
     </div>
+  </div>
+
   <!-- SKILLS -->
   <div id="skills" class="section">
     <h2>Compétences</h2>
