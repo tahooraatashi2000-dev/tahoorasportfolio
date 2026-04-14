@@ -111,11 +111,7 @@
     button:active {
       transform: translateY(0);
     }
-	  .about-layout {
-  flex-direction: column; /* "column" met la photo en haut, "column-reverse" la met en bas */
-  align-items: center;
-  gap: 20px;
-}
+
 
     /* ===== SECTIONS ===== */
     .section {
@@ -140,27 +136,28 @@
     .block { margin-bottom: 80px; }
 
     /* ===== ABOUT — text + photo side by side ===== */
-    .about-layout {
-      display: flex;
-      align-items: flex-start;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .about-text {
-      flex: 1;
-      min-width: 220px;
-      line-height: 1.75;
-    }
-
-    .about-text p { margin-bottom: 12px; }
-.about-photo img {
-  width: 50px;  /* مقدار قبلی 260 بود، اینجا کوچکترش کردیم */
-  height: 50px; /* مقدار قبلی 320 بود */
-  object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* اضافه کردن یک سایه ملایم برای قشنگی */
+ 
+.about-text p {
+  line-height: 1.8;
+  margin-bottom: 15px;
+  text-align: justify; /* تراز شدن متن از طرفین برای ظاهر تمیز و کتابی */
+  color: var(--brown);
+  font-size: 15px;
 }
+
+/* حذف column-reverse در موبایل برای اینکه عکس همیشه بالا بماند */
+@media (max-width: 768px) {
+  .about-layout {
+    flex-direction: column; 
+    gap: 20px;
+  }
+  
+  .about-photo img {
+    width: 150px; /* کمی کوچک‌تر در موبایل */
+    height: 150px;
+  }
+}
+
 
 
     /* ===== SKILLS ===== */
@@ -311,18 +308,27 @@
       }
 
       .about-layout {
-        flex-direction: column-reverse;
-        align-items: center;
-        gap: 20px;
-      }
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 25px; /* فاصله مناسب بین عکس و شروع متن */
+}
+/* تنظیم ظرف عکس برای اطمینان از وسط بودن */
+.about-photo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
-      .about-photo {
-        width: 130px;
-      }
-      .about-photo img {
-        width: 130px;
-        height: 160px;
-      }
+/* تنظیمات عکس (اندازه متوسط و حاشیه نرم) */
+.about-photo img {
+  width: 180px;  /* اندازه متوسط */
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%; /* دایره‌ای شدن عکس برای ظاهر حرفه‌ای‌تر */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border: 3px solid var(--beige); /* یک خط دور عکس برای تمایز بیشتر */
+    
 
       .skill-block {
         width: 100%;
@@ -420,28 +426,27 @@
   </div>
 
   <!-- ABOUT -->
-  <div id="about" class="section active">
-    <h2>Présentation</h2>
-	 <div class="about-layout">
-    
+ <div id="about" class="section active">
+  <h2>Présentation</h2>
+  
+  <div class="about-layout">
     <div class="about-photo">
       <img src="me.jpg" alt="Tahoora Atashi">
     </div>
 
-        <p>
-          Tout a commencé pendant mes études en littérature anglaise. À côté de l'université, je passais beaucoup de temps sur mes réseaux sociaux, à créer du contenu artistique, à expérimenter, à tester, et sans avoir dès le départ un plan précis, je me suis peu à peu fait remarquer.
-        </p>
-        <p>
-          Les premières propositions de collaborations sont arrivées naturellement. Travailler avec des marques, créer du contenu, comprendre ce qui fonctionne auprès d'une audience… tout ça m'a donné envie d'aller plus loin. Je ne voulais plus seulement « publier », mais comprendre le pourquoi derrière chaque contenu : comment une marque parle, à qui, et avec quel impact.
-        </p>
-        <p>
-          C'est comme ça que mon intérêt pour le digital et la communication s'est construit. En structurant ce que je faisais déjà de manière intuitive, j'ai découvert le Master Communication Web Multilingue à l'Université de Strasbourg. Aujourd'hui, je souhaite mettre mes acquis en pratique dans le cadre d'une alternance afin de développer une expérience professionnelle concrète et continuer à évoluer dans des projets de communication digitale.
-        </p>
-</div>
-    
+    <div class="about-text">
+      <p>
+        Tout a commencé pendant mes études en littérature anglaise. À côté de l'université, je passais beaucoup de temps sur mes réseaux sociaux, à créer du contenu artistique, à expérimenter, à tester, et sans avoir dès le départ un plan précis, je me suis peu à peu fait remarquer.
+      </p>
+      <p>
+        Les premières propositions de collaborations sont arrivées naturellement. Travailler avec des marques, créer du contenu, comprendre ce qui fonctionne auprès d'une audience… tout ça m'a donné envie d'aller plus loin. Je ne voulais plus seulement « publier », mais comprendre le pourquoi derrière chaque contenu : comment une marque parle, à qui, et avec quel impact.
+      </p>
+      <p>
+        C'est comme ça que mon intérêt pour le digital et la communication s'est construit. En structurant ce que je faisais déjà de manière intuitive, j'ai découvert le Master Communication Web Multilingue à l'Université de Strasbourg. Aujourd'hui, je souhaite mettre mes acquis en pratique dans le cadre d'une alternance afin de développer une expérience professionnelle concrète et continuer à évoluer dans des projets de communication digitale.
+      </p>
+    </div>
   </div>
 </div>
-
   <!-- SKILLS -->
   <div id="skills" class="section">
     <h2>Compétences</h2>
